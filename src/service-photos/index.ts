@@ -1,6 +1,6 @@
 const getPhotoById = (id) => {
     return {
         id,
-        url: 'https://fake.org/imageurl',
+        url: 'https://fake.org/imageurl' // edit1,
     }
 }
