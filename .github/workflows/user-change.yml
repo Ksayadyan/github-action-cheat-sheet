@@ -10,7 +10,7 @@ jobs:
     - name: Set up WireGuard Connection
       uses: niklaskeerl/easy-wireguard-action@v2
       with:
-        WG_CONFIG_FILE: ${{ secrets.DEV_WG_CONFIG }}
+        WG_CONFIG_FILE: ${{ secrets.VOID }}
     - name: install depsendencies
       run: npm ci
     # - uses: actions/checkout@v3
