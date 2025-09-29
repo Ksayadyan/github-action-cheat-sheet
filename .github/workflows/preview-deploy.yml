@@ -9,6 +9,19 @@ on:
       customer:
         description: "Customer identifier"
         required: true
+        type: choice
+        options:
+          - gosmart
+          - pageplus
+          - wfm
+          - net10
+          - tbv
+          - simplemobile
+          - safelink
+          - tfunbranded
+          - straighttalk
+          - tracfone
+          - visible
 jobs:
   deploy_feature:
     runs-on: ubuntu-latest
@@ -22,3 +35,5 @@ jobs:
       - name: Deploy preview
         id: deploy
         run: echo "npm run sst:deploy -- ${{ github.event.inputs.customer }} --stage preview"
+      - name: simple test
+        run: node ${{ github.event.inputs.customer }}
