@@ -1,0 +1,24 @@
+name: Preview deployment
+on:
+  workflow_dispatch:
+    inputs:
+      target_branch:
+        description: "Branch to run workflow on"
+        default: "master"
+        required: true
+      customer:
+        description: "Customer identifier"
+        required: true
+jobs:
+  deploy_feature:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.target_branch }}
+      - uses: actions/setup-node@v3
+      - name: Install deps
+        run: npm ci
+      - name: Deploy preview
+        id: deploy
+        run: echo "npm run sst:deploy -- ${{ github.event.inputs.customer }} --stage preview"
