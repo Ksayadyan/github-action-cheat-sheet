@@ -22,6 +22,8 @@ on:
           - straighttalk
           - tracfone
           - visible
+          - index1.js
+          - index2.js
 jobs:
   deploy_feature:
     runs-on: ubuntu-latest
