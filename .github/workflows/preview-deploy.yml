@@ -33,10 +33,11 @@ jobs:
           ref: ${{ github.event.inputs.target_branch }}
       - name: Get last commit info
         run: |
-          echo "LAST_COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
-          echo "LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
-          echo "LAST_COMMIT_DATE=$(git log -1 --pretty=%cd --date=iso)" >> $GITHUB_ENV
-          echo "DEPLOYMENT_TIME=$(date -u +"%Y-%m-%d %H:%M:%S UTC")" >> $GITHUB_ENV
+          echo "PREVIEW_LAST_COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
+          echo "PREVIEW_LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+          echo "PREVIEW_LAST_COMMIT_DATE=$(git log -1 --pretty=%cd --date=iso)" >> $GITHUB_ENV
+          echo "PREVIEW_DEPLOYMENT_TIME=$(date -u +"%Y-%m-%d %H:%M:%S UTC")" >> $GITHUB_ENV
+          echo "PREVIEW_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
       - uses: actions/setup-node@v3
       - name: Install deps
         run: npm ci
