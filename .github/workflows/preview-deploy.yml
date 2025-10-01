@@ -24,6 +24,13 @@ on:
           - visible
           - index1.js
           - index2.js
+      stage:
+        description: "Deployment stage"
+        required: true
+        type: choice
+        options:
+          - preprod
+          - preview
 jobs:
   deploy_feature:
     runs-on: ubuntu-latest
@@ -45,4 +52,4 @@ jobs:
         id: deploy
         run: echo "npm run sst:deploy -- ${{ github.event.inputs.customer }} --stage preview"
       - name: simple test
-        run: node ${{ github.event.inputs.customer }}
+        run: node ${{ github.event.inputs.customer }} --stage ${{ github.event.inputs.stage }}
