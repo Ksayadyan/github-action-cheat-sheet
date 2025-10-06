@@ -7,3 +7,4 @@ console.log(process.env.PREVIEW_BRANCH_NAME)
 
 console.log(process.argv)
 
+console.log(process.env.lol)

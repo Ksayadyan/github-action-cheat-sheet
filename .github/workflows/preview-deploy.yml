@@ -51,5 +51,13 @@ jobs:
       - name: Deploy preview
         id: deploy
         run: echo "npm run sst:deploy -- ${{ github.event.inputs.customer }} --stage preview"
-      - name: simple test
+      - name: simple test (preview)
+        if: ${{ github.event.inputs.stage == 'preview' }}
         run: node ${{ github.event.inputs.customer }} --stage ${{ github.event.inputs.stage }}
+        env:
+          lol: 'lol1'
+      - name: simple test (preprod)
+        if: ${{ github.event.inputs.stage == 'preprod' }}
+        run: node ${{ github.event.inputs.customer }} --stage ${{ github.event.inputs.stage }}
+        env:
+          lol: 'lol2'
